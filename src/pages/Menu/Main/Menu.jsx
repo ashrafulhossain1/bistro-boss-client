@@ -27,7 +27,7 @@ const Menu = () => {
         <div>
             <Helmet>
                 <title>
-                    Bistro Boss Menu
+                    Bistro Boss | Menu
                 </title>
             </Helmet>
             <Cover img={menuBg} title={'our menu'}></Cover>
@@ -38,14 +38,17 @@ const Menu = () => {
             <MenuCategory items={offer}></MenuCategory>
             
             {/* dessert menu items */}
-            <MenuCategory items={desserts} title={'dessert'} img={dessertImg}
-            ></MenuCategory>
-            <MenuCategory items={pizza} title={'Pizza'} img={pizzaImg}></MenuCategory>
+            <MenuCategory items={desserts} title={'dessert'} img={dessertImg}></MenuCategory>
+            {/* pizza menu items */}
+            <MenuCategory items={pizza} title={'pizza'} img={pizzaImg}></MenuCategory>
+            {/* salad menu item */}
             <MenuCategory items={salad} title={'salad'} img={saladImg}></MenuCategory>
+            {/* soup menu item */}
             <MenuCategory items={soup} title={'soup'} img={soupImg}></MenuCategory>
             
         </div>
     );
 };
+
 
 export default Menu;

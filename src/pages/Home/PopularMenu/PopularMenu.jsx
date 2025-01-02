@@ -5,21 +5,8 @@ import useMenu from "../../../hooks/useMenu";
 
 const PopularMenu = () => {
     const [menu] = useMenu();
-    const popular = menu.filter(item=> item.category === 'popular');
+    const popular = menu.filter(item => item.category === 'popular');
 
-
-
-
-
-    // const [menu, setMenu] = useState([]);
-    // useEffect(() => {
-    //     fetch('menu.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             const popularItems = data.filter(item => item.category === 'popular');
-    //             setMenu(popularItems)
-    //         })
-    // }, [])
     return (
         <section className="mb-12">
             <SectionTitle
@@ -34,7 +21,9 @@ const PopularMenu = () => {
                     ></MenuItem>)
                 }
             </div>
-            <button className="btn btn-outline border-0 border-b-4 mt-4">View Full Menu</button>
+            <div className="flex items-center justify-center">
+                <button className="btn btn-outline  border-0 border-b-4 mt-4">View Full Menu</button>
+            </div>
         </section>
     );
 };
