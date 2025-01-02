@@ -18,10 +18,12 @@ const Category = () => {
             subHeading={"From 11.00am to 10.00pm"}
             heading={"Order Online"}
             ></SectionTitle>
+
+            {/* slider */}
             <Swiper
                 slidesPerView={4}
                 spaceBetween={30}
-                centeredSlides={true}
+                // centeredSlides={true}
                 pagination={{
                     clickable: true,
                 }}
