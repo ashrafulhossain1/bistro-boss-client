@@ -12,6 +12,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
+    console.log("STATE In the location for login page: ", from)
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -92,11 +93,12 @@ const Login = () => {
                             <label className="label">
                                 < LoadCanvasTemplate />
                             </label>
+                            {/* TODO: apply disable for recaptcha */}
                             <input onBlur={handleValidateCaptcha} type="text" name='captcha' placeholder="Type the captcha text above" className="input input-bordered" required />
                             {/* <span onClick={handleValidateCaptcha} className="btn btn-outline btn-xs mt-3">validate</span> */}
                         </div>
                         <div className="form-control mt-6">
-                            <input disabled={disable} className="btn btn-primary" type='submit' value='login' />
+                            <input disabled={false} className="btn btn-primary" type='submit' value='login' />
                         </div>
                     </form>
                     <p>
