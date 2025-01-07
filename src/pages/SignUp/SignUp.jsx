@@ -5,13 +5,17 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import './SignUp.css'
+import userAxiosPublic from "../../hooks/userAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+    const axiosPublic = userAxiosPublic()
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm()
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const onSubmit = (data) => {
+
         console.log(data)
         // create user
         createUser(data.email, data.password)
@@ -21,18 +25,25 @@ const SignUp = () => {
                 // update suer
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log('success update')
+                        // console.log('success update')
+                        // create user in the database
+                        const userInfo = { name: data.name, email: data.email }
+
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added in database')
+                                }
+                            })
+
+
                         reset()
                         Swal.fire({
-                            title: "Profile Update Successfully!",
-                            icon: "success",
-                            draggable: true,
-                            customClass: {
-                                popup: 'my-popup',
-                                title: 'my-title',
-                                icon: 'my-icon',
-                                confirmButton: 'my-button',
-                            }
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
                         });
                         navigate('/')
 
@@ -71,7 +82,7 @@ const SignUp = () => {
                             </div>
 
 
-                            
+
                             {/* photo */}
                             <div className="form-control">
                                 <label className="label">
@@ -122,6 +133,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p>Already Have account <Link to='/login' className="text-purple-500">login</Link></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
