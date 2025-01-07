@@ -14,7 +14,7 @@ const NavBar = () => {
                 console.log('success Logout')
             })
             .catch((error) => {
-                console.log('Error By Logout', error)
+                // console.log('Error By Logout', error)
             })
     }
 

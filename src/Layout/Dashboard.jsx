@@ -4,12 +4,13 @@ import { MdRateReview } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import './DashboardLinks.css'
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart()
 
   // TODO: get isAdmin value in the database 
-  const isAdmin = true
+  const [isAdmin] = useAdmin()
 
 
   return (

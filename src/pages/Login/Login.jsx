@@ -13,7 +13,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
-    console.log("STATE In the location for login page: ", from)
+    // console.log("STATE In the location for login page: ", from)
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -25,7 +25,7 @@ const Login = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
+        // console.log(email, password)
 
         // firebase signIn
         signIn(email, password)
