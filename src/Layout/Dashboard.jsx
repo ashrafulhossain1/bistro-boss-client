@@ -15,12 +15,12 @@ const Dashboard = () => {
 
   return (
     <div className="flex ">
-      {/*  */}
       <div className="w-80 min-h-screen bg-orange-300">
         <ul className="menu p-4">
           {
             isAdmin ?
               <>
+              {/* for ADMIN */}
 
                 <li>
                   <NavLink to='/dashboard/adminHome'>
@@ -51,7 +51,9 @@ const Dashboard = () => {
                 </li>
 
               </> :
+              
               <>
+              {/* for USER */}
                 <li>
                   <NavLink to='/dashboard/userHome'>
                     <FaHome></FaHome>

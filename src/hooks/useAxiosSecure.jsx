@@ -9,6 +9,7 @@ const axiosSecure = axios.create({
 const useAxiosSecure = () => {
     const navigate = useNavigate()
     const { logOut } = useAuth()
+
     // request interceptor to ad authoriztion for every secure APIs
     axiosSecure.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access-token');
@@ -24,12 +25,11 @@ const useAxiosSecure = () => {
     // interceptor response status(401) || (403)
     axiosSecure.interceptors.response.use(function (response) {
         return response;
-    }, (error) => {
+    }, async (error) => {
         // facilities some work
-
         const status = error.response.status;
         if (status === 401 || status === 403) {
-            logOut()
+            await logOut()
             navigate('/login');
         }
         console.log("status error INTERCEPTOR", status)
