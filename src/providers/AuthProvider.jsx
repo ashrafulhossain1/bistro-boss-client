@@ -53,6 +53,8 @@ const AuthProvider = ({ children }) => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token)
+                            setLoading(false)
+                            // console.log('current user for token create 404 issue',currentUser)
                         }
                     })
 
@@ -60,9 +62,10 @@ const AuthProvider = ({ children }) => {
             else {
                 //remove token from client site ( local storage, cashing, in memory)
                 localStorage.removeItem('access-token')
+                setLoading(false)
             }
 
-            setLoading(false)
+           
         })
         return () => {
             return unsubscribe();
